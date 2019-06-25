@@ -48,7 +48,10 @@
     methods:{
       doLogin(){
         postRequest("/doLogin",this.user).then(data=>{
-            console.log(data);
+            if(data){
+              window.localStorage.setItem("user",JSON.stringify(data.obj));
+              this.$router.replace("/home");
+            }
           })
       },
       doReset(){
